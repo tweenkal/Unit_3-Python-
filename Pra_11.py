@@ -1,25 +1,29 @@
 # 👉write a programe to override super class comstructor and method
 #   in sub class
+from gettext import textdomain
 
-class teacher:
-    def __init__(self):
-        self.id = 1001
 
-    def display(self):
-        print("Teachers id=",self.id)
+class parent:
+    def __init__(self,txt):
+        self.message = txt
 
-class student(teacher):
-    def __init__(self):
-        self.id = 1
+    def printmessage(self):
+        print(self.message)
+        print("From parent class")
 
-    def display(self):
-        print("Student id",self.id)
+class child(parent):
+    def __init__(self,txt):
+        super().__init__(txt)
 
-s = student()
-s.display()
+    def printmessage(self):
+        super().printmessage()
+        print("From child class")
+
+x = child("Hello ,and welcome!")
+x.printmessage()
 
 
 #output:-
-# Student id 1
-
-
+# Hello ,and welcome!
+# From parent class
+# From child class
